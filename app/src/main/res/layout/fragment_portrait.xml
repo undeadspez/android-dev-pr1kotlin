@@ -14,9 +14,9 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/colorLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#eee"
             android:textSize="36sp" />
 
     </LinearLayout>
