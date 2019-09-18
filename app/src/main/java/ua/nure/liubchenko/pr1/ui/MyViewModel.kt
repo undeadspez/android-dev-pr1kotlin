@@ -1,7 +1,6 @@
 package ua.nure.liubchenko.pr1.ui
 
-import android.graphics.Color
-import android.graphics.Color.MAGENTA
+import android.graphics.Color.*
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ua.nure.liubchenko.pr1.utils.ColorUtils

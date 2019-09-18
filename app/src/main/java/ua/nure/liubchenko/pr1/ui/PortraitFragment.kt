@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 
 import ua.nure.liubchenko.pr1.R
 import android.widget.TextView
+import androidx.lifecycle.Observer
 
 class PortraitFragment : Fragment() {
 
@@ -27,11 +28,14 @@ class PortraitFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        model = activity?.let { ViewModelProviders.of(it)[MyViewModel::class.java] }!!
+        super.onViewCreated(view, savedInstanceState)
+        model = activity!!.let { ViewModelProviders.of(it).get(MyViewModel::class.java) }
 
-        view.findViewById<TextView>(R.id.colorLabel).apply {
-            text = model.toString()
-        }
+        model.colorData.observe(viewLifecycleOwner, Observer {
+            view.findViewById<TextView>(R.id.colorLabel).apply {
+                text = it.toString(16)
+            }
+        })
     }
 
 }

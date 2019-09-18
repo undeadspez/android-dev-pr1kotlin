@@ -5,7 +5,7 @@ import org.junit.Test
 import org.junit.Assert.*
 import ua.nure.liubchenko.pr1.utils.ColorUtilsImpl.colorToHexString
 
-// TODO - Fix java.lang.RuntimeException: Method rgb in android.graphics.Color not mocked
+// TODO: Fix java.lang.RuntimeException: Method rgb in android.graphics.Color not mocked
 class ColorUtilsUnitTest {
     @Test
     fun conversion_isCorrect() {
