@@ -10,11 +10,11 @@ import ua.nure.liubchenko.pr1.utils.ColorUtilsImpl
 
 class MyViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
 
-    val colorData: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>(MAGENTA)
+    val color: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>(argb(0xff, 0xff, 0xa5,0x00))
     }
 
-    val hexColor: LiveData<String> = Transformations.map(colorData) {
+    val hexColor: LiveData<String> = Transformations.map(color) {
         colorToHexString(it)
     }
 }

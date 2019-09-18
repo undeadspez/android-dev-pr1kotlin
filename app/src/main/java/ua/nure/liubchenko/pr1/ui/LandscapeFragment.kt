@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -31,8 +32,16 @@ class LandscapeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         model = activity!!.let { ViewModelProviders.of(it).get(MyViewModel::class.java) }
 
-        model.hexColor.observe(viewLifecycleOwner, Observer {
-            view.findViewById<TextView>(R.id.colorLabel).apply { text = it }
+        model.color.observe(viewLifecycleOwner, Observer { color ->
+            view.findViewById<LinearLayout>(R.id.colorPanel).apply {
+                setBackgroundColor(color)
+            }
+        })
+
+        model.hexColor.observe(viewLifecycleOwner, Observer { hexColor ->
+            view.findViewById<TextView>(R.id.colorLabel).apply {
+                text = hexColor
+            }
         })
     }
 
