@@ -31,10 +31,8 @@ class PortraitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         model = activity!!.let { ViewModelProviders.of(it).get(MyViewModel::class.java) }
 
-        model.colorData.observe(viewLifecycleOwner, Observer {
-            view.findViewById<TextView>(R.id.colorLabel).apply {
-                text = it.toString(16)
-            }
+        model.hexColor.observe(viewLifecycleOwner, Observer {
+            view.findViewById<TextView>(R.id.colorLabel).apply { text = it }
         })
     }
 

@@ -15,8 +15,11 @@ object ColorUtilsImpl : ColorUtils {
             Color.green(it),
             Color.blue(it)
         ).map { component ->
-            component.toString(16).padStart(2, '0')
-        }.fold("#", String::plus).toLowerCase(Locale.getDefault())
+            component
+                .toString(16)
+                .toLowerCase(Locale.getDefault())
+                .padStart(2, '0')
+        }.fold("#", String::plus)
     }
 
 }

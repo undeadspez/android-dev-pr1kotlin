@@ -1,7 +1,9 @@
 package ua.nure.liubchenko.pr1.ui
 
 import android.graphics.Color.*
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import ua.nure.liubchenko.pr1.utils.ColorUtils
 import ua.nure.liubchenko.pr1.utils.ColorUtilsImpl
@@ -12,5 +14,7 @@ class MyViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
         MutableLiveData<Int>(MAGENTA)
     }
 
-    override fun toString(): String = colorToHexString(colorData.value!!)
+    val hexColor: LiveData<String> = Transformations.map(colorData) {
+        colorToHexString(it)
+    }
 }
