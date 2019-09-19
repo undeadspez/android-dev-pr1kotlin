@@ -1,4 +1,4 @@
-package ua.nure.liubchenko.pr1.ui
+package ua.nure.liubchenko.pr1.ui.main
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -20,19 +20,20 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
-    private val model: MyViewModel by viewModels()
+    private val model: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        @Suppress("MoveVariableDeclarationIntoWhen")
         val orientation = arguments?.getInt("orientation")
 
         val layoutId = when (orientation) {
-            Configuration.ORIENTATION_PORTRAIT -> R.layout.fragment_main_portrait
+            Configuration.ORIENTATION_PORTRAIT  -> R.layout.fragment_main_portrait
             Configuration.ORIENTATION_LANDSCAPE -> R.layout.fragment_main_landscape
-            else -> R.layout.fragment_main_portrait
+            else                                -> R.layout.fragment_main_portrait
         }
 
         return inflater.inflate(layoutId, container, false)

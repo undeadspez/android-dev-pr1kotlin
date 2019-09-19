@@ -1,11 +1,11 @@
-package ua.nure.liubchenko.pr1.ui
+package ua.nure.liubchenko.pr1.ui.main
 
 import android.graphics.Color.*
 import androidx.lifecycle.*
 import ua.nure.liubchenko.pr1.utils.ColorUtils
 import ua.nure.liubchenko.pr1.utils.ColorUtilsImpl
 
-class MyViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
+class MainViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
 
     companion object {
         val defaultColor: Int = parseColor("#ffa500")

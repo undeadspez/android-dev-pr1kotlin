@@ -4,7 +4,7 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import ua.nure.liubchenko.pr1.ui.MainFragment
+import ua.nure.liubchenko.pr1.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,10 +32,10 @@ class MainActivity : AppCompatActivity() {
             .commitNow()
     }
 
-    private fun getFragment(orientation: Int): Fragment {
-        return MainFragment.newInstance().apply {
+    private fun getFragment(orientation: Int): Fragment = orientation.let {
+        MainFragment.newInstance().apply {
             arguments = Bundle().apply {
-                putInt("orientation", orientation)
+                putInt("orientation", it)
             }
         }
     }
