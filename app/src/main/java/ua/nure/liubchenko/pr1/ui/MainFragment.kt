@@ -1,5 +1,6 @@
 package ua.nure.liubchenko.pr1.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,17 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.SeekBar
+
+import ua.nure.liubchenko.pr1.R
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 
-import ua.nure.liubchenko.pr1.R
-
-class LandscapeFragment : Fragment() {
+class MainFragment : Fragment() {
 
     companion object {
-        fun newInstance() = LandscapeFragment()
+        fun newInstance() = MainFragment()
     }
 
     private val model: MyViewModel by viewModels()
@@ -27,7 +27,15 @@ class LandscapeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_landscape, container, false)
+        val orientation = arguments?.getInt("orientation")
+
+        val layoutId = when (orientation) {
+            Configuration.ORIENTATION_PORTRAIT -> R.layout.fragment_main_portrait
+            Configuration.ORIENTATION_LANDSCAPE -> R.layout.fragment_main_landscape
+            else -> R.layout.fragment_main_portrait
+        }
+
+        return inflater.inflate(layoutId, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -74,9 +82,6 @@ class LandscapeFragment : Fragment() {
         model.blueComponent.observe(viewLifecycleOwner, Observer { blueComponent ->
             view!!.findViewById<TextView>(R.id.labelBlue).apply {
                 text = blueComponent.toString()
-            }
-            view!!.findViewById<SeekBar>(R.id.sliderBlue).apply {
-                progress = blueComponent
             }
         })
     }

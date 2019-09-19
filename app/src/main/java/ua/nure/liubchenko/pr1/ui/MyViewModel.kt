@@ -11,6 +11,7 @@ class MyViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
         val defaultColor: Int = parseColor("#ffa500")
     }
 
+    // TODO: Doesn't work correctly
     val color: LiveData<Int> by lazy {
         MediatorLiveData<Int>().apply {
             value = 0xff shl 24
