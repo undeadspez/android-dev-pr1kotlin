@@ -30,7 +30,7 @@ class MyViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
     }
 
     val hexColor: LiveData<String> by lazy {
-        Transformations.map(color, this::colorToHexString)
+        Transformations.map(color, this::rgbColorToHexString)
     }
 
     val redComponent: MutableLiveData<Int> by lazy {

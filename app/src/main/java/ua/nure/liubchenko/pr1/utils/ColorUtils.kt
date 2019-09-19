@@ -1,19 +1,18 @@
 package ua.nure.liubchenko.pr1.utils
 
-import android.graphics.Color
 import java.util.*
 
 interface ColorUtils {
-    fun colorToHexString(color: Int): String
+    fun rgbColorToHexString(color: Int): String
 }
 
 object ColorUtilsImpl : ColorUtils {
 
-    override fun colorToHexString(color: Int): String = color.let {
+    override fun rgbColorToHexString(color: Int): String = color.let {
         arrayOf(
-            Color.red(it),
-            Color.green(it),
-            Color.blue(it)
+            it shr 16 and 0xff,
+            it shr 8  and 0xff,
+            it        and 0xff
         ).map { component ->
             component
                 .toString(16)
