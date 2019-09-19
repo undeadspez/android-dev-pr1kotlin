@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.SeekBar
-import androidx.lifecycle.ViewModelProviders
 
 import ua.nure.liubchenko.pr1.R
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 
 class PortraitFragment : Fragment() {
@@ -19,7 +19,7 @@ class PortraitFragment : Fragment() {
         fun newInstance() = PortraitFragment()
     }
 
-    private lateinit var model: MyViewModel
+    private val model: MyViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,8 +31,6 @@ class PortraitFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        model = activity!!.let { ViewModelProviders.of(it).get(MyViewModel::class.java) }
 
         setUpColorPanel()
 

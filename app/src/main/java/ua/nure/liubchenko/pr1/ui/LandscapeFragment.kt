@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
@@ -19,7 +20,7 @@ class LandscapeFragment : Fragment() {
         fun newInstance() = LandscapeFragment()
     }
 
-    private lateinit var model: MyViewModel
+    private val model: MyViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,8 +32,6 @@ class LandscapeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        model = activity!!.let { ViewModelProviders.of(it).get(MyViewModel::class.java) }
 
         setUpColorPanel()
 
