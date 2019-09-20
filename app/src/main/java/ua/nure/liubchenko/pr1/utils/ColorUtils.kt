@@ -1,5 +1,8 @@
 package ua.nure.liubchenko.pr1.utils
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import java.util.*
 
 interface ColorUtils {
@@ -20,5 +23,7 @@ object ColorUtilsImpl : ColorUtils {
                 .padStart(2, '0')
         }.fold("#", String::plus)
     }
+
+    fun Int.asDrawable(): Drawable = ColorDrawable(this)
 
 }

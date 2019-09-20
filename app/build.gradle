@@ -4,10 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+    dataBinding.enabled = true
     compileSdkVersion rootProject.compileSdkVersion
-    dataBinding {
-        enabled = true
-    }
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId 'ua.nure.liubchenko.pr1'
@@ -45,6 +43,7 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$rootProject.legacySupportVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "com.google.android:flexbox:$rootProject.flexboxVersion"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.legacySupportVersion"
 
     androidTestImplementation "androidx.test:runner:$rootProject.runnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"

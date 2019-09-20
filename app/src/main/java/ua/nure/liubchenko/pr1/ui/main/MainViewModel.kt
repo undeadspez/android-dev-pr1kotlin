@@ -11,39 +11,31 @@ class MainViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
         val defaultColor: Int = parseColor("#ffa500")
     }
 
-    // TODO: Doesn't work correctly
-    val color: LiveData<Int> by lazy {
-        MediatorLiveData<Int>().apply {
-            value = 0xff shl 24
+//    TODO: Doesn't work correctly
+//    val color: LiveData<Int> by lazy {
+//        MediatorLiveData<Int>().apply {
+//            value = 0xff shl 24
+//
+//            addSource(redComponent) { r ->
+//                this.apply { value = value!! or (r and 0xff shl 16) }
+//            }
+//
+//            addSource(greenComponent) { g ->
+//                this.apply { value = value!! or (g and 0xff shl 8) }
+//            }
+//
+//            addSource(blueComponent)  { b ->
+//                this.apply { value = value!! or (b and 0xff) }
+//            }
+//        }
+//    }
 
-            addSource(redComponent) { r ->
-                this.apply { value = value!! or (r and 0xff shl 16) }
-            }
+    //val hexColor: LiveData<String> = Transformations.map(color, this::rgbColorToHexString)
 
-            addSource(greenComponent) { g ->
-                this.apply { value = value!! or (g and 0xff shl 8) }
-            }
+    val redComponent: MutableLiveData<Int>   = MutableLiveData(red(defaultColor))
 
-            addSource(blueComponent)  { b ->
-                this.apply { value = value!! or (b and 0xff) }
-            }
-        }
-    }
+    val greenComponent: MutableLiveData<Int> = MutableLiveData(green(defaultColor))
 
-    val hexColor: LiveData<String> by lazy {
-        Transformations.map(color, this::rgbColorToHexString)
-    }
-
-    val redComponent: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>(red(defaultColor))
-    }
-
-    val greenComponent: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>(green(defaultColor))
-    }
-
-    val blueComponent: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>(blue(defaultColor))
-    }
+    val blueComponent: MutableLiveData<Int>  = MutableLiveData(blue(defaultColor))
 
 }
