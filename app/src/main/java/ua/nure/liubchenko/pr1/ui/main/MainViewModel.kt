@@ -12,6 +12,13 @@ class MainViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
         val defaultColor: Int = parseColor("#ffa500")
     }
 
+    val textColor: LiveData<Int> by lazy {
+        color.map {
+            if (luminance(it) > 0.5) BLACK
+            else WHITE
+        }
+    }
+
     /**
      * Previous implementation (wasn't working). TODO: Compare implementations.
      * val color: LiveData<Int> by lazy {
@@ -28,6 +35,7 @@ class MainViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
             greenComponent.switchMap { g ->
                 blueComponent.switchMap { b ->
                     arrayOf(
+                              0xff shl 24,
                         r and 0xff shl 16,
                         g and 0xff shl 8,
                         b and 0xff
