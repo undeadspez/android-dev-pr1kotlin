@@ -58,6 +58,7 @@
 
                 <SeekBar
                     android:id="@+id/sliderRed"
+                    android:theme="@style/SeekBarRed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="255"
@@ -82,6 +83,7 @@
 
                 <SeekBar
                     android:id="@+id/sliderGreen"
+                    android:theme="@style/SeekBarGreen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="255"
@@ -106,6 +108,7 @@
 
                 <SeekBar
                     android:id="@+id/sliderBlue"
+                    android:theme="@style/SeekBarBlue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="255"
