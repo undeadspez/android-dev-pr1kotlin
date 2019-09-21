@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.databinding.adapters.Converters" />
         <variable
             name="viewModel"
             type="ua.nure.liubchenko.pr1.ui.main.MainViewModel" />
@@ -21,14 +20,14 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:gravity="center"
-            android:background="@{Converters.convertColorToDrawable(viewModel.color)}">
+            android:background="@{viewModel.color}">
 
             <TextView
                 android:id="@+id/colorLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="36sp"
-                android:text="@{viewModel.hexColor}"
+                android:text="@{viewModel.colorLabel}"
                 android:textColor="@{viewModel.textColor}" />
 
         </LinearLayout>

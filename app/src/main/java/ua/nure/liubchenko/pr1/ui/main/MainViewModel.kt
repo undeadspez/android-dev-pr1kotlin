@@ -45,7 +45,7 @@ class MainViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
         }
     }
 
-    val hexColor: LiveData<String> by lazy {
+    val colorLabel: LiveData<String> by lazy {
         Transformations.map(color, this::rgbColorToHexString)
     }
 
