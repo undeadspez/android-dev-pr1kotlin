@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.databinding.adapters.Converters" />
         <variable
             name="viewModel"
             type="ua.nure.liubchenko.pr1.ui.main.MainViewModel" />
@@ -19,13 +20,15 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="@{Converters.convertColorToDrawable(viewModel.color)}">
 
             <TextView
                 android:id="@+id/colorLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="36sp" />
+                android:textSize="36sp"
+                android:text="@{viewModel.hexColor}" />
 
         </LinearLayout>
 
@@ -57,8 +60,8 @@
                     android:id="@+id/sliderRed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:min="0"
-                    android:max="255" />
+                    android:max="255"
+                    android:progress="@={viewModel.redComponent}" />
 
             </LinearLayout>
 
@@ -81,8 +84,8 @@
                     android:id="@+id/sliderGreen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:min="0"
-                    android:max="255" />
+                    android:max="255"
+                    android:progress="@={viewModel.greenComponent}" />
 
             </LinearLayout>
 
@@ -105,8 +108,8 @@
                     android:id="@+id/sliderBlue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:min="0"
-                    android:max="255" />
+                    android:max="255"
+                    android:progress="@={viewModel.blueComponent}" />
 
             </LinearLayout>
 

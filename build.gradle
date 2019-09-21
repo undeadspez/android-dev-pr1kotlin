@@ -16,9 +16,11 @@ buildscript {
         ktxVersion = '1.1.0'
         legacySupportVersion = '1.0.0'
         lifecycleVersion = '2.1.0'
+        lifecycleReactiveStreamsVersion = '1.1.1'
         materialVersion = '1.1.0-alpha10'
         mockitoVersion = '1.10.19'
         runnerVersion = '1.2.0'
+        rxKotlinVersion = '2.4.0'
     }
 
     repositories {
