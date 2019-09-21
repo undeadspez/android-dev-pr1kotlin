@@ -11,8 +11,8 @@ object ColorUtilsImpl : ColorUtils {
     override fun rgbColorToHexString(color: Int): String = color.let {
         arrayOf(
             it shr 16 and 0xff,
-            it shr 8 and 0xff,
-            it and 0xff
+            it shr 8  and 0xff,
+            it        and 0xff
         ).map { component ->
             component
                 .toString(16)
