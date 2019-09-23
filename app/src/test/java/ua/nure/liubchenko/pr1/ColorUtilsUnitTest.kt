@@ -2,22 +2,26 @@ package ua.nure.liubchenko.pr1
 
 import org.junit.Test
 import org.junit.Assert.*
-import ua.nure.liubchenko.pr1.utils.ColorUtilsImpl.rgbColorToHexString
+import ua.nure.liubchenko.pr1.utils.ColorUtilsImpl.composeColor
+import ua.nure.liubchenko.pr1.utils.ColorUtilsImpl.decomposeColor
 
+@Suppress("ConvertToStringTemplate", "ComplexRedundantLet")
 class ColorUtilsUnitTest {
 
-    @Test fun conversionFromHex_isCorrect() {
-        val crimson = 0xdc143c
-        val crimsonHexString = rgbColorToHexString(crimson)
-
-        assertEquals("#dc143c", crimsonHexString)
+    companion object {
+        const val CRIMSON = 0xdc143c
+        const val AQUAMARINE = 8388564
     }
 
-    @Test fun conversionFromDec_isCorrect() {
-        val aquamarine = 8388564
-        val aquamarineHexString = rgbColorToHexString(aquamarine)
+    @Test fun decomposition_isCorrect() {
+        decomposeColor(AQUAMARINE)
+            .map { it.toString(16).padStart(2, '0') }
+            .let { (_, r, g ,b) -> assertEquals("#7fffd4", "#" + r + g + b) }
+    }
 
-        assertEquals("#7fffd4", aquamarineHexString)
+    @Test fun  composition_isCorrect() {
+        composeColor(0xff, 0xdc, 0x14, 0x3c)
+            .let { color -> assertEquals(CRIMSON, color and 0xffffff)}
     }
 
 }

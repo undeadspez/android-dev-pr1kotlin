@@ -1,24 +1,29 @@
 package ua.nure.liubchenko.pr1.utils
 
-import java.util.*
-
 interface ColorUtils {
-    fun rgbColorToHexString(color: Int): String
+
+    fun decomposeColor(color: Int): List<Int>
+
+    fun composeColor(alpha: Int, red: Int, green: Int, blue: Int): Int
 }
 
 object ColorUtilsImpl : ColorUtils {
 
-    override fun rgbColorToHexString(color: Int): String = color.let {
-        arrayOf(
-            it shr 16 and 0xff,
-            it shr 8  and 0xff,
-            it        and 0xff
-        ).map { component ->
-            component
-                .toString(16)
-                .toLowerCase(Locale.getDefault())
-                .padStart(2, '0')
-        }.fold("#", String::plus)
+    override fun decomposeColor(color: Int): List<Int> {
+        return listOf(
+            color shr 24 and 0xff,
+            color shr 16 and 0xff,
+            color shr 8  and 0xff,
+            color        and 0xff
+        )
     }
 
+    override fun composeColor(alpha: Int, red: Int, green: Int, blue: Int): Int {
+        return listOf(
+            alpha and 0xff shl 24,
+            red   and 0xff shl 16,
+            green and 0xff shl 8,
+            blue  and 0xff
+        ).reduce(Int::plus)
+    }
 }

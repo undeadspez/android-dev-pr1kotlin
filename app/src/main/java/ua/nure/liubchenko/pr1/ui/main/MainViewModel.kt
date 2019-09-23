@@ -34,19 +34,21 @@ class MainViewModel : ViewModel(), ColorUtils by ColorUtilsImpl {
         redComponent.switchMap { r ->
             greenComponent.switchMap { g ->
                 blueComponent.switchMap { b ->
-                    arrayOf(
-                              0xff shl 24,
-                        r and 0xff shl 16,
-                        g and 0xff shl 8,
-                        b and 0xff
-                    ).reduce(Int::plus).let { MutableLiveData(it) }
+                    MutableLiveData(
+                        composeColor(0xff, r, g, b)
+                    )
                 }
             }
         }
     }
 
     val colorLabel: LiveData<String> by lazy {
-        Transformations.map(color, this::rgbColorToHexString)
+        Transformations.map(color) {
+            decomposeColor(it)
+                .drop(1)
+                .map { n -> n.toString(16).padStart(2, '0') }
+                .fold("#", String::plus)
+        }
     }
 
     val redComponent: MutableLiveData<Int> by lazy {
